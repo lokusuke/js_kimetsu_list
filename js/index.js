@@ -1,11 +1,25 @@
 "use strict";
 
+// loading画面の要素を取得(関数化)
+const initLoading = () => {
+  const loadingViewElement = document.querySelector(".loading");
+  window.addEventListener("load", () => {
+    // 3秒経過後にローディング画面を非表示にするためloadedクラスをHTMLに追加
+    setTimeout(() => {
+      loadingViewElement.classList.add("loaded");
+    }, 3000);
+  });
+};
+
+// loadingアニメーションの実行
+initLoading();
+
 // キャラクター表示部分のHTMLElement
 const characterListElement = document.getElementById("character-list");
 
 // ラジオボタン部分の要素を取得し配列に格納
 const characterCategoryElementList = document.querySelectorAll(
-  '[name="character-category"]', // name="character-category"のタグを持つ要素を配列に入れる
+  '[name="character-category"]', // name="character-category"のタグを持つ要素を対象
 );
 
 // debug

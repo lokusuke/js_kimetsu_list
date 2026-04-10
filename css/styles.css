@@ -1,0 +1,28 @@
+.loading {
+  /*ローディング画面の縦横幅を画面いっぱいに表示*/
+  width: 100vw;
+  height: 100vh;
+  /*ローディング画面の表示位置を固定*/
+  position: fixed;
+  /* 他のどの要素にも下にならないように数字を大きくする（positionと一緒につかう） */
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background: #1082ce;
+  display: flex;
+  /* 水平軸で真ん中によせる */
+  justify-content: center;
+  /* 垂直軸で真ん中によせる */
+  align-items: center;
+  /* 中身を立て並びにする */
+  flex-direction: column;
+  /*ローディング画面を0.5秒かけて非表示*/
+  transition: all 0.5s linear;
+}
+
+/* loadされたあとに適用 */
+.loading.loaded {
+  /* 透明度 */
+  opacity: 0;
+  background: #000;
+}
