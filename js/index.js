@@ -56,3 +56,12 @@ characterCategoryElementList.forEach((element) => {
 // 各キャラクターを表示する処理を書く
 
 // 鬼殺隊
+const kimetsuApiUrl = "https://ihatov08.github.io/kimetsu_api/api/";
+const fetchAllCharacters = async () => {
+  const allCharactersJson = await fetch(`${kimetsuApiUrl}/all.json`);
+  const allCharactersList = await allCharactersJson.json();
+  console.log(allCharactersList);
+  return allCharactersList;
+};
+
+fetchAllCharacters();
