@@ -10,7 +10,10 @@ export const fetchCharacters = async (category) => {
       `${kimetsuApiBaseUrl}/kimetsu_api/api/${category}.json`,
     );
     const charactersList = await charactersJson.json();
-    console.log(charactersList);
+
+    // // debug
+    // console.log(charactersList);
+
     return charactersList;
   } catch (error) {
     console.error("エラーが発生しました");
