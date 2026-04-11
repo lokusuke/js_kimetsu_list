@@ -77,7 +77,7 @@ const renderHtml = (characterList, baseUri) => {
     return `        
     <div class="character">
           <p class="name">${character.name}(${character.category})</p>
-          <img src="${imageUri}" alt="">
+          <img src="${imageUri}" alt="${character.name}の画像">
     </div>
     `;
   });

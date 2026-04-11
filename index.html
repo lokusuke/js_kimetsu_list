@@ -8,19 +8,7 @@
     <title>鬼滅の刃キャラクター</title>
   </head>
   <body>
-    <main>
-      <h1>鬼滅の刃キャラクター検索</h1>
-      <!-- loading画面表示 -->
-      <div class="loading">
-        <p class="loading-text">Loading...</p>
-        <!-- https://projects.lukehaas.me/css-loaders/ からアニメーション取得 -->
-        <div class="loader"></div>
-      </div>
-      <div class="character-list" id="character-list">
-        <!-- Todo: ここにidで識別したElementを作成する
-       イベントリスナーでラジオボタンの種類に応じた処理がJSで動的に埋め込む -->
-      </div>
-    </main>
+    <h1>鬼滅の刃キャラクター検索</h1>
     <aside>
       <!-- aside: ページ側面にラジオボタンを配置 -->
       <div class="character-filter">
@@ -51,6 +39,18 @@
         >
       </div>
     </aside>
+    <main>
+      <!-- loading画面表示 -->
+      <div class="loading">
+        <p class="loading-text">Loading...</p>
+        <!-- https://projects.lukehaas.me/css-loaders/ からアニメーション取得 -->
+        <div class="loader"></div>
+      </div>
+      <div class="character-list" id="character-list">
+        <!-- Todo: ここにidで識別したElementを作成する
+       イベントリスナーでラジオボタンの種類に応じた処理がJSで動的に埋め込む -->
+      </div>
+    </main>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
