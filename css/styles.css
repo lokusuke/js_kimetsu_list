@@ -25,4 +25,6 @@
   /* 透明度 */
   opacity: 0;
   background: #000;
+  /* loading画面の存在を消す */
+  display: none;
 }

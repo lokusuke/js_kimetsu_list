@@ -16,7 +16,6 @@
         <!-- https://projects.lukehaas.me/css-loaders/ からアニメーション取得 -->
         <div class="loader"></div>
       </div>
-
       <div class="character-list" id="character-list">
         <div class="character">
           <p class="name">竈門 炭治郎</p>
@@ -45,7 +44,7 @@
           ><input
             type="radio"
             name="character-category"
-            value="all-characters"
+            value="all"
             checked
           />全キャラクター</label
         >
@@ -53,25 +52,21 @@
           ><input
             type="radio"
             name="character-category"
-            value="demon-hunters"
+            value="kisatsutai"
           />鬼殺隊</label
         >
         <label
           ><input
             type="radio"
             name="character-category"
-            value="pillars"
+            value="hashira"
           />柱</label
         >
         <label
-          ><input
-            type="radio"
-            name="character-category"
-            value="demons"
-          />鬼</label
+          ><input type="radio" name="character-category" value="oni" />鬼</label
         >
       </div>
     </aside>
-    <script src="js/index.js"></script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>
