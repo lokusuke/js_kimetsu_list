@@ -6,6 +6,8 @@
 - updateCharacterView(): 鬼滅の刃APIから情報取得～画面表示までを共通化（以下関数を内包）
   - renderHtml(): キャラクター一覧のHTMLをレンダリング
   - fetchCharacters(): 鬼滅の刃APIから情報を取得
+  - showLoading(): ローディング画面の表示 
+  - hideLoading(): ローディング画面の非表示
 */
 
 // 鬼滅の刃API用のモジュールを呼び出す
