@@ -47,12 +47,25 @@ const init = () => {
   });
 };
 
-// 鬼滅の刃APIからデータ取得～画面表示までを共通化した関数(コントローラ層)
-const updateCharacterView = async (category) => {
-  // ローディング画面の表示にあたって、loadedクラスがないことを確認(あれば消す)
+// loading画面を見せる関数（UI層）
+const showLoading = () => {
   if (loadingViewElement.classList.contains("loaded")) {
     loadingViewElement.classList.remove("loaded");
   }
+};
+
+// loading画面を隠す関数（UI層）
+const hideLoading = () => {
+  if (loadingViewElement.classList.contains("loaded")) {
+    return;
+  }
+  loadingViewElement.classList.add("loaded");
+};
+
+// 鬼滅の刃APIからデータ取得～画面表示までを共通化した関数(コントローラ層)
+const updateCharacterView = async (category) => {
+  // ローディング画面の表示
+  showLoading();
 
   // 鬼滅の刃APIリクエスト(ローディング画面で0.5秒待つ)
   const [characterList] = await Promise.all([
@@ -66,11 +79,11 @@ const updateCharacterView = async (category) => {
   const baseUri = kimetsuApiBaseUrl;
   renderHtml(characterList, baseUri);
 
-  // ローディング画面を削除する
-  loadingViewElement.classList.add("loaded");
+  // ローディング画面を非表示
+  hideLoading();
 };
 
-// 全キャラ表示する関数(ビュー層)
+// 全キャラ表示する関数(UI層)
 const renderHtml = (characterList, baseUri) => {
   const characterHtmlList = characterList.map((character) => {
     const imageUri = `${baseUri}${character.image}`;
