@@ -24,44 +24,27 @@ const characterCategoryElementList = document.querySelectorAll(
   '[name="character-category"]', // name="character-category"のタグを持つ要素を対象
 );
 
-// // debug
-// console.log(characterListElement);
-// console.log(characterCategoryElementList);
-
 // 初回ラジオボタン(checked)情報を取得し画面表示する初期化関数（コントローラ層）
 const init = () => {
-  characterCategoryElementList.forEach((element) => {
-    // // debug
-    // console.log(element);
-    // console.dir(element); // elementオブジェクトの構造確認
-
-    if (element.checked) {
-      // // debug
-      // console.log("ラジオボタンにcheckedついてます");
-
-      // カテゴリ取得
-      const category = element.value;
-
-      // 画面に全キャラ反映
-      updateCharacterView(category);
-      return;
-    }
-  });
+  // 各ラジオボタンからcheckedになっているものを探す
+  const checkedRadioButton = Array.from(characterCategoryElementList).find(
+    (element) => element.checked,
+  );
+  const category = checkedRadioButton.value;
+  updateCharacterView(category);
+  return;
 };
 
 // loading画面を見せる関数（UI層）
 const showLoading = () => {
-  if (loadingViewElement.classList.contains("loaded")) {
-    loadingViewElement.classList.remove("loaded");
-  }
+  loadingViewElement.classList.remove("loaded");
+  return;
 };
 
 // loading画面を隠す関数（UI層）
 const hideLoading = () => {
-  if (loadingViewElement.classList.contains("loaded")) {
-    return;
-  }
   loadingViewElement.classList.add("loaded");
+  return;
 };
 
 // 鬼滅の刃APIからデータ取得～画面表示までを共通化した関数(コントローラ層)
@@ -78,39 +61,49 @@ const updateCharacterView = async (category) => {
   ]);
 
   // 鬼滅の刃APIから画像取得、画面に反映
-  const baseUri = kimetsuApiBaseUrl;
-  renderHtml(characterList, baseUri);
+  renderHtml(characterList);
 
   // ローディング画面を非表示
   hideLoading();
 };
 
-// 全キャラ表示する関数(UI層)
-const renderHtml = (characterList, baseUri) => {
-  const characterHtmlList = characterList.map((character) => {
-    const imageUri = `${baseUri}${character.image}`;
-    return `        
-    <div class="character">
-          <p class="name">${character.name}(${character.category})</p>
-          <img src="${imageUri}" alt="${character.name}の画像">
-    </div>
-    `;
+// キャラ表示する関数(UI層)
+const renderHtml = (characterList) => {
+  const divList = characterList.map((character) => {
+    // キャラクター表示部分を空にする
+    characterListElement.innerHTML = "";
+
+    // 鬼滅の刃API画像URL
+    const imageUri = `${kimetsuApiBaseUrl}${character.image}`;
+
+    // CreateElementを使ってdivタグを作成
+    const newDiv = document.createElement("div");
+    newDiv.className = "character";
+
+    // CreateElementを使ってpタグを作成
+    const newP = document.createElement("p");
+    newP.textContent = `${character.name}(${character.category})`;
+
+    // CreateElementを使ってimgタグを作成
+    const newImg = document.createElement("img");
+    newImg.src = imageUri;
+    newImg.alt = `${character.name}の画像`;
+
+    // divの子要素としてp, imgを追加
+    newDiv.appendChild(newP);
+    newDiv.appendChild(newImg);
+
+    return newDiv;
   });
-  characterListElement.innerHTML = characterHtmlList.join("");
+
+  divList.forEach((div) => {
+    characterListElement.appendChild(div);
+  });
 };
 
 // ラジオボタンのイベントリスナーを登録(コントローラ層)
 characterCategoryElementList.forEach((element) => {
   element.addEventListener("change", (event) => {
-    // ラジオボタンのクラス名チェック
-    if (event.target.name != "character-category") {
-      return;
-    }
-
-    // // debug
-    // console.log(event);
-    // console.log(event.target.value);
-
     // eventからradio buttonのvalueを取得
     const category = event.target.value;
 

@@ -25,10 +25,6 @@
   z-index: 9999;
   top: 0;
   left: 0;
-  background-image: var(--ichimatsu-bg);
-  background-size: var(--ichimatsu-size);
-  background-color: var(--ichimatsu-color);
-  background-repeat: repeat;
   display: flex;
   /* 水平軸で真ん中によせる */
   justify-content: center;
@@ -62,13 +58,7 @@
 
 body {
   background-image: var(--ichimatsu-background-image);
-
-  /* 模様の大きさを指定（1つの正方形のサイズ） */
   background-size: var(--ichimatsu-size);
-
-  /* ベースの色を緑にする */
   background-color: var(--ichimatsu-green);
-
-  /* タイルのように繰り返す */
   background-repeat: repeat;
 }
