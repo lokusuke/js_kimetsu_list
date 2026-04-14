@@ -70,6 +70,7 @@ const renderHtml = (characterList) => {
   // キャラクター表示部分を空にする
   characterListElement.innerHTML = "";
 
+  // characterListから各キャラ情報を取り出し、divタグ（子にp, imgタグ）を作って親divに紐づける
   characterList.forEach((character) => {
     // 鬼滅の刃API画像URL
     const imageUri = `${kimetsuApiBaseUrl}${character.image}`;
@@ -91,7 +92,7 @@ const renderHtml = (characterList) => {
     newDiv.appendChild(newP);
     newDiv.appendChild(newImg);
 
-    characterListElement.appendChild(div);
+    characterListElement.appendChild(newDiv);
   });
 };
 
