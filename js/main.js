@@ -92,6 +92,7 @@ const renderHtml = (characterList) => {
     newDiv.appendChild(newP);
     newDiv.appendChild(newImg);
 
+    // 親divに子divとして追加
     characterListElement.appendChild(newDiv);
   });
 };
