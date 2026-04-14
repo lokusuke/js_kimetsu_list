@@ -38,13 +38,11 @@ const init = () => {
 // loading画面を見せる関数（UI層）
 const showLoading = () => {
   loadingViewElement.classList.remove("loaded");
-  return;
 };
 
 // loading画面を隠す関数（UI層）
 const hideLoading = () => {
   loadingViewElement.classList.add("loaded");
-  return;
 };
 
 // 鬼滅の刃APIからデータ取得～画面表示までを共通化した関数(コントローラ層)
@@ -69,10 +67,10 @@ const updateCharacterView = async (category) => {
 
 // キャラ表示する関数(UI層)
 const renderHtml = (characterList) => {
-  const divList = characterList.map((character) => {
-    // キャラクター表示部分を空にする
-    characterListElement.innerHTML = "";
+  // キャラクター表示部分を空にする
+  characterListElement.innerHTML = "";
 
+  characterList.forEach((character) => {
     // 鬼滅の刃API画像URL
     const imageUri = `${kimetsuApiBaseUrl}${character.image}`;
 
@@ -93,10 +91,6 @@ const renderHtml = (characterList) => {
     newDiv.appendChild(newP);
     newDiv.appendChild(newImg);
 
-    return newDiv;
-  });
-
-  divList.forEach((div) => {
     characterListElement.appendChild(div);
   });
 };
