@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animation.css" />
+    <title>鬼滅の刃キャラクター</title>
+  </head>
+  <body>
+    <div class="title-panel">
+      <h1>鬼滅の刃キャラクター検索</h1>
+    </div>
+    <aside>
+      <div class="character-filter">
+        <label
+          ><input
+            type="radio"
+            name="character-category"
+            value="all"
+            checked
+          />全キャラクター</label
+        >
+        <label
+          ><input
+            type="radio"
+            name="character-category"
+            value="kisatsutai"
+          />鬼殺隊</label
+        >
+        <label
+          ><input
+            type="radio"
+            name="character-category"
+            value="hashira"
+          />柱</label
+        >
+        <label
+          ><input type="radio" name="character-category" value="oni" />鬼</label
+        >
+      </div>
+    </aside>
+    <main>
+      <!-- loading画面表示 -->
+      <div class="loading">
+        <p class="loading-text">Loading...</p>
+        <!-- https://projects.lukehaas.me/css-loaders/ からアニメーション取得 -->
+        <div class="loader"></div>
+      </div>
+      <div class="character-list" id="character-list">
+        <!-- Todo: ここにidで識別したElementを作成する
+       イベントリスナーでラジオボタンの種類に応じた処理がJSで動的に埋め込む -->
+      </div>
+    </main>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

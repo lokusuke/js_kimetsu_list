@@ -1,0 +1,64 @@
+/* 炭治郎の市松模様を表現するCSS */
+:root {
+  /* 市松模様の色設定 */
+  --ichimatsu-green: rgba(0, 169, 104, 0.2);
+  --ichimatsu-black: rgba(0, 0, 0, 0.2);
+
+  /* 市松模様のグラデーション設定 */
+  --ichimatsu-background-image:
+    linear-gradient(45deg, var(--ichimatsu-black) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--ichimatsu-black) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--ichimatsu-black) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--ichimatsu-black) 75%);
+
+  /* 模様の大きさを指定（1つの正方形のサイズ） */
+  --ichimatsu-size: 60px 60px;
+}
+
+.loading {
+  /*ローディング画面の縦横幅を画面いっぱいに表示*/
+  width: 100vw;
+  height: 100vh;
+  /*ローディング画面の表示位置を固定*/
+  position: fixed;
+  /* 他のどの要素にも下にならないように数字を大きくする（positionと一緒につかう） */
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  display: flex;
+  /* 水平軸で真ん中によせる */
+  justify-content: center;
+  /* 垂直軸で真ん中によせる */
+  align-items: center;
+  /* 中身を立て並びにする */
+  flex-direction: column;
+  /*ローディング画面を0.5秒かけて非表示*/
+  transition: all 0.5s linear;
+}
+
+/* loadされたあとに適用 */
+.loading.loaded {
+  /* 透明度 */
+  opacity: 0;
+  background: #000;
+  /* loading画面の存在を消す */
+  display: none;
+}
+
+.character-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.character-list img {
+  width: 100%; /* 親要素（.character）の幅いっぱいまで広げる */
+  aspect-ratio: 1 / 1; /* 横幅を基準に、縦幅を同じにする（正方形） */
+}
+
+body {
+  background-image: var(--ichimatsu-background-image);
+  background-size: var(--ichimatsu-size);
+  background-color: var(--ichimatsu-green);
+  background-repeat: repeat;
+}
